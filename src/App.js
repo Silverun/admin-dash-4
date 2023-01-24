@@ -1,25 +1,11 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useContext } from "react";
+import AdminPanel from "./components/AdminPanel";
+import { AuthForm } from "./components/AuthForm";
+import { UserContext } from "./context/UserContextProvider";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => {
+  const userCtx = useContext(UserContext);
+  return <>{userCtx?.isAuth ? <AdminPanel /> : <AuthForm />}</>;
+};
 
 export default App;
